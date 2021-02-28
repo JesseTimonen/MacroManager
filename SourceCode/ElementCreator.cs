@@ -330,6 +330,8 @@ namespace MacroManager
 
         private void DeleteHotkey(int index)
         {
+            EnableHotkeysUIButtons(false);
+            ToggleHotkeysButton.Enabled = false;
             ConfirmDeleteLabel.Text = "Are you sure you want to delete hotkey: \"" + savedHotkeys[index].Name + "\"";
             ConfirmDeletePanel.Visible = true;
             deletedObject = "hotkey";
@@ -339,6 +341,8 @@ namespace MacroManager
 
         private void DeleteMacro(int index)
         {
+            EnableMacroUIButtons(false);
+            NewMacroButton.Enabled = false;
             ConfirmDeleteLabel.Text = "Are you sure you want to delete macro: \"" + savedMacros[index].Name + "\"";
             ConfirmDeletePanel.Visible = true;
             deletedObject = "macro";
@@ -350,6 +354,8 @@ namespace MacroManager
         {
             if (deletedObject == "hotkey")
             {
+                EnableHotkeysUIButtons(true);
+                ToggleHotkeysButton.Enabled = true;
                 savedHotkeys.Remove(savedHotkeys[deletedIndex]);
                 UpdateHotkeysUI();
                 DeleteHotkeyPlaceholder();
@@ -357,6 +363,8 @@ namespace MacroManager
             }
             else
             {
+                EnableMacroUIButtons(true);
+                NewMacroButton.Enabled = true;
                 savedMacros.Remove(savedMacros[deletedIndex]);
                 UpdateMacrosUI();
                 DeleteMacroPlaceholder();
@@ -369,6 +377,17 @@ namespace MacroManager
 
         private void CancelConfirmDeleteButton_Click(object sender, EventArgs e)
         {
+            if (deletedObject == "hotkey")
+            {
+                ToggleHotkeysButton.Enabled = true;
+                EnableHotkeysUIButtons(true);
+            }
+            else
+            {
+                NewMacroButton.Enabled = true;
+                EnableMacroUIButtons(true);
+            }
+
             ConfirmDeletePanel.Visible = false;
         }
 

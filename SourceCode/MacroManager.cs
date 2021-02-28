@@ -633,20 +633,34 @@ namespace MacroManager
                     }
                 }
 
+                if (macroInstructions.ContainsKey(timerStep + 1))
+                {
+                    if (!macroInstructions.ContainsKey(timerStep) && !macroInstructions.ContainsKey(timerStep - 1))
+                    {
+                        mouseLastPosition = new int[] { Cursor.Position.X, Cursor.Position.Y };
+                    }
+                }
+
                 if (macroInstructions.ContainsKey(timerStep))
                 {
-                    mouseLastPosition = new int[] { Cursor.Position.X, Cursor.Position.Y };
-                    MoveMouseToPosition(macroInstructions[timerStep][0], macroInstructions[timerStep][1]);
+                    if (macroInstructions.ContainsKey(timerStep - 1))
+                    {
+                        MoveMouseToPosition(macroInstructions[timerStep][0], macroInstructions[timerStep][1]);
+                    }
                     LeftMouseClick(macroInstructions[timerStep][0], macroInstructions[timerStep][1]);
                 }
-                else if (macroInstructions.ContainsKey(timerStep) && macroInstructions.ContainsKey(timerStep - 1))
+
+                if (macroInstructions.ContainsKey(timerStep + 1))
                 {
-                    MoveMouseToPosition(macroInstructions[timerStep][0], macroInstructions[timerStep][1]);
-                    LeftMouseClick(macroInstructions[timerStep][0], macroInstructions[timerStep][1]);
+                    MoveMouseToPosition(macroInstructions[timerStep + 1][0], macroInstructions[timerStep + 1][1]);
                 }
-                else if (macroInstructions.ContainsKey(timerStep - 1))
+
+                if (macroInstructions.ContainsKey(timerStep - 1))
                 {
-                    MoveMouseToPosition(mouseLastPosition[0], mouseLastPosition[1]);
+                    if (!macroInstructions.ContainsKey(timerStep) && !macroInstructions.ContainsKey(timerStep + 1))
+                    {
+                        MoveMouseToPosition(mouseLastPosition[0], mouseLastPosition[1]);
+                    }
                 }
             }
 
@@ -659,6 +673,9 @@ namespace MacroManager
             {
                 mouseLastPosition = new int[] { Cursor.Position.X, Cursor.Position.Y };
                 MoveMouseToPosition(hotkeyInstructions[0], hotkeyInstructions[1]);
+            }
+            else if (hotkeyTimerStep == 1)
+            {
                 LeftMouseClick(hotkeyInstructions[0], hotkeyInstructions[1]);
             }
             else if (hotkeyTimerStep >= 2)
@@ -812,6 +829,7 @@ namespace MacroManager
         // Check for keyboard inputs
         protected override void WndProc(ref Message m)
         {
+            if (ConfirmDeletePanel.Visible) { return; }
             if (m.Msg == 0x0312)
             {
                 int id = m.WParam.ToInt32();

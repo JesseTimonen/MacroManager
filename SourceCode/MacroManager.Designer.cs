@@ -442,7 +442,7 @@ namespace MacroManager
             this.SavedHotkeysPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.SavedHotkeysPanel.Location = new System.Drawing.Point(0, 110);
             this.SavedHotkeysPanel.Name = "SavedHotkeysPanel";
-            this.SavedHotkeysPanel.Size = new System.Drawing.Size(695, 330);
+            this.SavedHotkeysPanel.Size = new System.Drawing.Size(600, 330);
             this.SavedHotkeysPanel.TabIndex = 0;
             // 
             // ToggleHotkeysButton
@@ -951,14 +951,14 @@ namespace MacroManager
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.ClientSize = new System.Drawing.Size(1024, 576);
-            this.Controls.Add(this.ConfirmDeletePanel);
             this.Controls.Add(this.Title);
             this.Controls.Add(this.MinimizeApplicationButton);
             this.Controls.Add(this.CloseApplicationButton);
+            this.Controls.Add(this.HotkeysPanel);
             this.Controls.Add(this.AutoClickerPanel);
+            this.Controls.Add(this.ConfirmDeletePanel);
             this.Controls.Add(this.MacrosPanel);
             this.Controls.Add(this.SettingsPanel);
-            this.Controls.Add(this.HotkeysPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MacroManagerForm";
