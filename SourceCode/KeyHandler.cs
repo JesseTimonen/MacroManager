@@ -87,8 +87,6 @@ namespace MacroManager
                 case "enter": return Keys.Enter;
                 case "tab": return Keys.Tab;
                 case "backspace": return Keys.Back;
-                case "shift": return Keys.ShiftKey;
-                case "control": return Keys.ControlKey;
                 case "capslock": return Keys.CapsLock;
                 case "scroll lock": return Keys.Scroll;
                 case "pageup": return Keys.PageUp;

@@ -411,11 +411,10 @@ namespace MacroManager
             this.HotkeyGuideLabel4.ForeColor = System.Drawing.Color.Silver;
             this.HotkeyGuideLabel4.Location = new System.Drawing.Point(0, 350);
             this.HotkeyGuideLabel4.Name = "HotkeyGuideLabel4";
-            this.HotkeyGuideLabel4.Size = new System.Drawing.Size(139, 357);
+            this.HotkeyGuideLabel4.Size = new System.Drawing.Size(139, 323);
             this.HotkeyGuideLabel4.TabIndex = 0;
             this.HotkeyGuideLabel4.Text = "A-Z\r\n0-9\r\nnumpad0 - numpad9\r\ntab\r\nspace\r\npageup\r\npagedown\r\nup\r\ndown\r\nleft\r\nright\r" +
-    "\nenter\r\nbackspace\r\ncapslock\r\nshift\r\ncontrol\r\nscroll lock\r\nhome\r\ninsert\r\nnumlock\r" +
-    "\nnone";
+    "\nenter\r\nbackspace\r\ncapslock\r\nscroll lock\r\nhome\r\ninsert\r\nnumlock\r\nnone";
             // 
             // SaveHotkeysButton
             // 
