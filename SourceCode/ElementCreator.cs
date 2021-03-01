@@ -423,12 +423,34 @@ namespace MacroManager
             EnableMacroUIButtons(false);
             isPlayingMacro = true;
             macroDuration = savedMacros[index].Duration + (int.Parse(macroDelayTextboxes[index].Text) * (1000 / Timer.Interval));
-            NewMacroButton.Text = "Stop Macro (F12)";
             MacroStatusLabel.Visible = false;
             MacroStatusLabel.Text = "Playing '" + savedMacros[index].Name + "'";
             MacroStatusLabel.Visible = true;
             MacroStatusLabel.ForeColor = Color.Green;
             StartTimer();
+
+            if (bool.Parse(settings["SameHotkeyForMacros"]))
+            {
+                if (settings["StartMacroHotkey"].ToLower() == "already in use" || settings["StartMacroHotkey"].ToLower() == "none")
+                {
+                    NewMacroButton.Text = "Stop Macro";
+                }
+                else
+                {
+                    NewMacroButton.Text = "Stop Macro\n(Hotkey: " + settings["StartMacroHotkey"] + ")";
+                }
+            }
+            else
+            {
+                if (settings["StopMacroHotkey"].ToLower() == "already in use" || settings["StopMacroHotkey"].ToLower() == "none")
+                {
+                    NewMacroButton.Text = "Stop Macro";
+                }
+                else
+                {
+                    NewMacroButton.Text = "Stop Macro\n(Hotkey: " + settings["StopMacroHotkey"] + ")";
+                }
+            }
         }
 
 

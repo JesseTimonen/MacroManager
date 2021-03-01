@@ -63,21 +63,34 @@ namespace MacroManager
             this.HotkeysStatusLabel = new System.Windows.Forms.Label();
             this.Timer = new System.Windows.Forms.Timer(this.components);
             this.SettingsPanel = new System.Windows.Forms.Panel();
+            this.SettingsSameAutoClickerHotkeyCheckbox = new System.Windows.Forms.CheckBox();
+            this.SettingsSameMacroHotkeyCheckbox = new System.Windows.Forms.CheckBox();
+            this.SettingsFastModeLabel = new System.Windows.Forms.Label();
+            this.SettingsGeneralHotkeysLabel = new System.Windows.Forms.Label();
+            this.SettingsStopAutoClickerTextbox = new System.Windows.Forms.TextBox();
+            this.SettingsStopAutoClickerLabel = new System.Windows.Forms.Label();
+            this.SettingsStartAutoClickerTextbox = new System.Windows.Forms.TextBox();
+            this.SettingsStartAutoClickerLabel = new System.Windows.Forms.Label();
+            this.SettingsCreateHotkeyTextbox = new System.Windows.Forms.TextBox();
+            this.SettingsCreateHotkeyLabel = new System.Windows.Forms.Label();
+            this.SettingsStopMacroTextbox = new System.Windows.Forms.TextBox();
+            this.SettingsStopMacroLabel = new System.Windows.Forms.Label();
+            this.SettingsStartMacroTextbox = new System.Windows.Forms.TextBox();
+            this.SettingsStartMacroLabel = new System.Windows.Forms.Label();
+            this.SettingsGeneralHotkeysTitle = new System.Windows.Forms.Label();
             this.SettingsClickWhileMovingCheckbox = new System.Windows.Forms.CheckBox();
-            this.SettingsAutoClickerLabel = new System.Windows.Forms.Label();
+            this.SettingsAutoClickerTitle = new System.Windows.Forms.Label();
             this.SettingsToAutoClickerButton = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.SettingsEngineSpeedLabel1 = new System.Windows.Forms.Label();
             this.SettingsSavedFeedbackLabel = new System.Windows.Forms.Label();
-            this.SettingsFastModeLabel2 = new System.Windows.Forms.Label();
             this.SettingsSafeModeLabel1 = new System.Windows.Forms.Label();
-            this.SettingsFastModeLabel1 = new System.Windows.Forms.Label();
             this.SettingsSafeModeRadioButton = new System.Windows.Forms.RadioButton();
             this.SettingsFastModeRadioButton = new System.Windows.Forms.RadioButton();
             this.SettingsToSettingsButton = new System.Windows.Forms.Button();
             this.SaveSettingsButton = new System.Windows.Forms.Button();
             this.SettingsToMacroButton = new System.Windows.Forms.Button();
             this.SettingsToHotkeysButton = new System.Windows.Forms.Button();
-            this.SettingsEngineSpeedLabel = new System.Windows.Forms.Label();
+            this.SettingsEngineSpeedTitle = new System.Windows.Forms.Label();
             this.HotkeyTimer = new System.Windows.Forms.Timer(this.components);
             this.AutoClickerPanel = new System.Windows.Forms.Panel();
             this.AutoClickerModeButton = new System.Windows.Forms.Button();
@@ -519,32 +532,194 @@ namespace MacroManager
             // SettingsPanel
             // 
             this.SettingsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
+            this.SettingsPanel.Controls.Add(this.SettingsSameAutoClickerHotkeyCheckbox);
+            this.SettingsPanel.Controls.Add(this.SettingsSameMacroHotkeyCheckbox);
+            this.SettingsPanel.Controls.Add(this.SettingsFastModeLabel);
+            this.SettingsPanel.Controls.Add(this.SettingsGeneralHotkeysLabel);
+            this.SettingsPanel.Controls.Add(this.SettingsStopAutoClickerTextbox);
+            this.SettingsPanel.Controls.Add(this.SettingsStopAutoClickerLabel);
+            this.SettingsPanel.Controls.Add(this.SettingsStartAutoClickerTextbox);
+            this.SettingsPanel.Controls.Add(this.SettingsStartAutoClickerLabel);
+            this.SettingsPanel.Controls.Add(this.SettingsCreateHotkeyTextbox);
+            this.SettingsPanel.Controls.Add(this.SettingsCreateHotkeyLabel);
+            this.SettingsPanel.Controls.Add(this.SettingsStopMacroTextbox);
+            this.SettingsPanel.Controls.Add(this.SettingsStopMacroLabel);
+            this.SettingsPanel.Controls.Add(this.SettingsStartMacroTextbox);
+            this.SettingsPanel.Controls.Add(this.SettingsStartMacroLabel);
+            this.SettingsPanel.Controls.Add(this.SettingsGeneralHotkeysTitle);
             this.SettingsPanel.Controls.Add(this.SettingsClickWhileMovingCheckbox);
-            this.SettingsPanel.Controls.Add(this.SettingsAutoClickerLabel);
+            this.SettingsPanel.Controls.Add(this.SettingsAutoClickerTitle);
             this.SettingsPanel.Controls.Add(this.SettingsToAutoClickerButton);
-            this.SettingsPanel.Controls.Add(this.label3);
+            this.SettingsPanel.Controls.Add(this.SettingsEngineSpeedLabel1);
             this.SettingsPanel.Controls.Add(this.SettingsSavedFeedbackLabel);
-            this.SettingsPanel.Controls.Add(this.SettingsFastModeLabel2);
             this.SettingsPanel.Controls.Add(this.SettingsSafeModeLabel1);
-            this.SettingsPanel.Controls.Add(this.SettingsFastModeLabel1);
             this.SettingsPanel.Controls.Add(this.SettingsSafeModeRadioButton);
             this.SettingsPanel.Controls.Add(this.SettingsFastModeRadioButton);
             this.SettingsPanel.Controls.Add(this.SettingsToSettingsButton);
             this.SettingsPanel.Controls.Add(this.SaveSettingsButton);
             this.SettingsPanel.Controls.Add(this.SettingsToMacroButton);
             this.SettingsPanel.Controls.Add(this.SettingsToHotkeysButton);
-            this.SettingsPanel.Controls.Add(this.SettingsEngineSpeedLabel);
+            this.SettingsPanel.Controls.Add(this.SettingsEngineSpeedTitle);
             this.SettingsPanel.Location = new System.Drawing.Point(0, 40);
             this.SettingsPanel.Name = "SettingsPanel";
             this.SettingsPanel.Size = new System.Drawing.Size(1024, 536);
             this.SettingsPanel.TabIndex = 0;
             this.SettingsPanel.Visible = false;
             // 
+            // SettingsSameAutoClickerHotkeyCheckbox
+            // 
+            this.SettingsSameAutoClickerHotkeyCheckbox.AutoSize = true;
+            this.SettingsSameAutoClickerHotkeyCheckbox.ForeColor = System.Drawing.Color.White;
+            this.SettingsSameAutoClickerHotkeyCheckbox.Location = new System.Drawing.Point(610, 426);
+            this.SettingsSameAutoClickerHotkeyCheckbox.Name = "SettingsSameAutoClickerHotkeyCheckbox";
+            this.SettingsSameAutoClickerHotkeyCheckbox.Size = new System.Drawing.Size(198, 21);
+            this.SettingsSameAutoClickerHotkeyCheckbox.TabIndex = 21;
+            this.SettingsSameAutoClickerHotkeyCheckbox.TabStop = false;
+            this.SettingsSameAutoClickerHotkeyCheckbox.Text = "Use same key to start/stop";
+            this.SettingsSameAutoClickerHotkeyCheckbox.UseVisualStyleBackColor = true;
+            this.SettingsSameAutoClickerHotkeyCheckbox.CheckedChanged += new System.EventHandler(this.SettingsSameAutoClickerKeyCheckbox_CheckedChanged);
+            // 
+            // SettingsSameMacroHotkeyCheckbox
+            // 
+            this.SettingsSameMacroHotkeyCheckbox.AutoSize = true;
+            this.SettingsSameMacroHotkeyCheckbox.ForeColor = System.Drawing.Color.White;
+            this.SettingsSameMacroHotkeyCheckbox.Location = new System.Drawing.Point(610, 231);
+            this.SettingsSameMacroHotkeyCheckbox.Name = "SettingsSameMacroHotkeyCheckbox";
+            this.SettingsSameMacroHotkeyCheckbox.Size = new System.Drawing.Size(198, 21);
+            this.SettingsSameMacroHotkeyCheckbox.TabIndex = 20;
+            this.SettingsSameMacroHotkeyCheckbox.TabStop = false;
+            this.SettingsSameMacroHotkeyCheckbox.Text = "Use same key to start/stop";
+            this.SettingsSameMacroHotkeyCheckbox.UseVisualStyleBackColor = true;
+            this.SettingsSameMacroHotkeyCheckbox.CheckedChanged += new System.EventHandler(this.SettingsSameMacroKeyCheckbox_CheckedChanged);
+            // 
+            // SettingsFastModeLabel
+            // 
+            this.SettingsFastModeLabel.AutoSize = true;
+            this.SettingsFastModeLabel.ForeColor = System.Drawing.Color.Gray;
+            this.SettingsFastModeLabel.Location = new System.Drawing.Point(60, 185);
+            this.SettingsFastModeLabel.Name = "SettingsFastModeLabel";
+            this.SettingsFastModeLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SettingsFastModeLabel.Size = new System.Drawing.Size(335, 34);
+            this.SettingsFastModeLabel.TabIndex = 19;
+            this.SettingsFastModeLabel.Text = "Records macros and does action 50 times a second\r\nCan cause issues if your comput" +
+    "er can\'t keep up";
+            // 
+            // SettingsGeneralHotkeysLabel
+            // 
+            this.SettingsGeneralHotkeysLabel.AutoSize = true;
+            this.SettingsGeneralHotkeysLabel.ForeColor = System.Drawing.Color.Gray;
+            this.SettingsGeneralHotkeysLabel.Location = new System.Drawing.Point(500, 105);
+            this.SettingsGeneralHotkeysLabel.Name = "SettingsGeneralHotkeysLabel";
+            this.SettingsGeneralHotkeysLabel.Size = new System.Drawing.Size(225, 17);
+            this.SettingsGeneralHotkeysLabel.TabIndex = 18;
+            this.SettingsGeneralHotkeysLabel.Text = "Only Hotkeys F1 - F12 are allowed";
+            // 
+            // SettingsStopAutoClickerTextbox
+            // 
+            this.SettingsStopAutoClickerTextbox.Location = new System.Drawing.Point(503, 425);
+            this.SettingsStopAutoClickerTextbox.Name = "SettingsStopAutoClickerTextbox";
+            this.SettingsStopAutoClickerTextbox.Size = new System.Drawing.Size(100, 22);
+            this.SettingsStopAutoClickerTextbox.TabIndex = 17;
+            this.SettingsStopAutoClickerTextbox.Validating += new System.ComponentModel.CancelEventHandler(this.SettingsStopAutoClickerTextbox_Validating);
+            // 
+            // SettingsStopAutoClickerLabel
+            // 
+            this.SettingsStopAutoClickerLabel.AutoSize = true;
+            this.SettingsStopAutoClickerLabel.ForeColor = System.Drawing.Color.White;
+            this.SettingsStopAutoClickerLabel.Location = new System.Drawing.Point(500, 405);
+            this.SettingsStopAutoClickerLabel.Name = "SettingsStopAutoClickerLabel";
+            this.SettingsStopAutoClickerLabel.Size = new System.Drawing.Size(113, 17);
+            this.SettingsStopAutoClickerLabel.TabIndex = 16;
+            this.SettingsStopAutoClickerLabel.Text = "Stop auto clicker";
+            // 
+            // SettingsStartAutoClickerTextbox
+            // 
+            this.SettingsStartAutoClickerTextbox.Location = new System.Drawing.Point(503, 360);
+            this.SettingsStartAutoClickerTextbox.Name = "SettingsStartAutoClickerTextbox";
+            this.SettingsStartAutoClickerTextbox.Size = new System.Drawing.Size(100, 22);
+            this.SettingsStartAutoClickerTextbox.TabIndex = 15;
+            this.SettingsStartAutoClickerTextbox.Validating += new System.ComponentModel.CancelEventHandler(this.SettingsStartAutoClickerTextbox_Validating);
+            // 
+            // SettingsStartAutoClickerLabel
+            // 
+            this.SettingsStartAutoClickerLabel.AutoSize = true;
+            this.SettingsStartAutoClickerLabel.ForeColor = System.Drawing.Color.White;
+            this.SettingsStartAutoClickerLabel.Location = new System.Drawing.Point(500, 340);
+            this.SettingsStartAutoClickerLabel.Name = "SettingsStartAutoClickerLabel";
+            this.SettingsStartAutoClickerLabel.Size = new System.Drawing.Size(114, 17);
+            this.SettingsStartAutoClickerLabel.TabIndex = 14;
+            this.SettingsStartAutoClickerLabel.Text = "Start auto clicker";
+            // 
+            // SettingsCreateHotkeyTextbox
+            // 
+            this.SettingsCreateHotkeyTextbox.Location = new System.Drawing.Point(503, 295);
+            this.SettingsCreateHotkeyTextbox.Name = "SettingsCreateHotkeyTextbox";
+            this.SettingsCreateHotkeyTextbox.Size = new System.Drawing.Size(100, 22);
+            this.SettingsCreateHotkeyTextbox.TabIndex = 13;
+            this.SettingsCreateHotkeyTextbox.Validating += new System.ComponentModel.CancelEventHandler(this.SettingsCreateHotkeyTextbox_Validating);
+            // 
+            // SettingsCreateHotkeyLabel
+            // 
+            this.SettingsCreateHotkeyLabel.AutoSize = true;
+            this.SettingsCreateHotkeyLabel.ForeColor = System.Drawing.Color.White;
+            this.SettingsCreateHotkeyLabel.Location = new System.Drawing.Point(500, 275);
+            this.SettingsCreateHotkeyLabel.Name = "SettingsCreateHotkeyLabel";
+            this.SettingsCreateHotkeyLabel.Size = new System.Drawing.Size(125, 17);
+            this.SettingsCreateHotkeyLabel.TabIndex = 12;
+            this.SettingsCreateHotkeyLabel.Text = "Create new hotkey";
+            // 
+            // SettingsStopMacroTextbox
+            // 
+            this.SettingsStopMacroTextbox.Location = new System.Drawing.Point(503, 230);
+            this.SettingsStopMacroTextbox.Name = "SettingsStopMacroTextbox";
+            this.SettingsStopMacroTextbox.Size = new System.Drawing.Size(100, 22);
+            this.SettingsStopMacroTextbox.TabIndex = 11;
+            this.SettingsStopMacroTextbox.Validating += new System.ComponentModel.CancelEventHandler(this.SettingsStopMacroTextbox_Validating);
+            // 
+            // SettingsStopMacroLabel
+            // 
+            this.SettingsStopMacroLabel.AutoSize = true;
+            this.SettingsStopMacroLabel.ForeColor = System.Drawing.Color.White;
+            this.SettingsStopMacroLabel.Location = new System.Drawing.Point(500, 210);
+            this.SettingsStopMacroLabel.Name = "SettingsStopMacroLabel";
+            this.SettingsStopMacroLabel.Size = new System.Drawing.Size(144, 17);
+            this.SettingsStopMacroLabel.TabIndex = 10;
+            this.SettingsStopMacroLabel.Text = "Stop macro recording";
+            // 
+            // SettingsStartMacroTextbox
+            // 
+            this.SettingsStartMacroTextbox.Location = new System.Drawing.Point(503, 165);
+            this.SettingsStartMacroTextbox.Name = "SettingsStartMacroTextbox";
+            this.SettingsStartMacroTextbox.Size = new System.Drawing.Size(100, 22);
+            this.SettingsStartMacroTextbox.TabIndex = 9;
+            this.SettingsStartMacroTextbox.Validating += new System.ComponentModel.CancelEventHandler(this.SettingsStartMacroHotkeyTextbox_Validating);
+            // 
+            // SettingsStartMacroLabel
+            // 
+            this.SettingsStartMacroLabel.AutoSize = true;
+            this.SettingsStartMacroLabel.ForeColor = System.Drawing.Color.White;
+            this.SettingsStartMacroLabel.Location = new System.Drawing.Point(500, 145);
+            this.SettingsStartMacroLabel.Name = "SettingsStartMacroLabel";
+            this.SettingsStartMacroLabel.Size = new System.Drawing.Size(145, 17);
+            this.SettingsStartMacroLabel.TabIndex = 8;
+            this.SettingsStartMacroLabel.Text = "Start macro recording";
+            // 
+            // SettingsGeneralHotkeysTitle
+            // 
+            this.SettingsGeneralHotkeysTitle.AutoSize = true;
+            this.SettingsGeneralHotkeysTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SettingsGeneralHotkeysTitle.ForeColor = System.Drawing.Color.White;
+            this.SettingsGeneralHotkeysTitle.Location = new System.Drawing.Point(500, 80);
+            this.SettingsGeneralHotkeysTitle.Name = "SettingsGeneralHotkeysTitle";
+            this.SettingsGeneralHotkeysTitle.Size = new System.Drawing.Size(149, 20);
+            this.SettingsGeneralHotkeysTitle.TabIndex = 7;
+            this.SettingsGeneralHotkeysTitle.Text = "General Hotkeys";
+            // 
             // SettingsClickWhileMovingCheckbox
             // 
             this.SettingsClickWhileMovingCheckbox.AutoSize = true;
             this.SettingsClickWhileMovingCheckbox.ForeColor = System.Drawing.Color.White;
-            this.SettingsClickWhileMovingCheckbox.Location = new System.Drawing.Point(45, 385);
+            this.SettingsClickWhileMovingCheckbox.Location = new System.Drawing.Point(45, 365);
             this.SettingsClickWhileMovingCheckbox.Name = "SettingsClickWhileMovingCheckbox";
             this.SettingsClickWhileMovingCheckbox.Size = new System.Drawing.Size(203, 21);
             this.SettingsClickWhileMovingCheckbox.TabIndex = 0;
@@ -552,16 +727,16 @@ namespace MacroManager
             this.SettingsClickWhileMovingCheckbox.Text = "Click while mouse is moving";
             this.SettingsClickWhileMovingCheckbox.UseVisualStyleBackColor = true;
             // 
-            // SettingsAutoClickerLabel
+            // SettingsAutoClickerTitle
             // 
-            this.SettingsAutoClickerLabel.AutoSize = true;
-            this.SettingsAutoClickerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SettingsAutoClickerLabel.ForeColor = System.Drawing.Color.White;
-            this.SettingsAutoClickerLabel.Location = new System.Drawing.Point(30, 350);
-            this.SettingsAutoClickerLabel.Name = "SettingsAutoClickerLabel";
-            this.SettingsAutoClickerLabel.Size = new System.Drawing.Size(112, 20);
-            this.SettingsAutoClickerLabel.TabIndex = 6;
-            this.SettingsAutoClickerLabel.Text = "Auto Clicker";
+            this.SettingsAutoClickerTitle.AutoSize = true;
+            this.SettingsAutoClickerTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SettingsAutoClickerTitle.ForeColor = System.Drawing.Color.White;
+            this.SettingsAutoClickerTitle.Location = new System.Drawing.Point(30, 330);
+            this.SettingsAutoClickerTitle.Name = "SettingsAutoClickerTitle";
+            this.SettingsAutoClickerTitle.Size = new System.Drawing.Size(112, 20);
+            this.SettingsAutoClickerTitle.TabIndex = 6;
+            this.SettingsAutoClickerTitle.Text = "Auto Clicker";
             // 
             // SettingsToAutoClickerButton
             // 
@@ -577,16 +752,17 @@ namespace MacroManager
             this.SettingsToAutoClickerButton.UseVisualStyleBackColor = true;
             this.SettingsToAutoClickerButton.Click += new System.EventHandler(this.SettingsToAutoClickerButton_Click);
             // 
-            // label3
+            // SettingsEngineSpeedLabel1
             // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label3.Location = new System.Drawing.Point(30, 105);
-            this.label3.Name = "label3";
-            this.label3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label3.Size = new System.Drawing.Size(687, 51);
-            this.label3.TabIndex = 4;
-            this.label3.Text = resources.GetString("label3.Text");
+            this.SettingsEngineSpeedLabel1.AutoSize = true;
+            this.SettingsEngineSpeedLabel1.ForeColor = System.Drawing.Color.Gray;
+            this.SettingsEngineSpeedLabel1.Location = new System.Drawing.Point(30, 105);
+            this.SettingsEngineSpeedLabel1.Name = "SettingsEngineSpeedLabel1";
+            this.SettingsEngineSpeedLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SettingsEngineSpeedLabel1.Size = new System.Drawing.Size(365, 34);
+            this.SettingsEngineSpeedLabel1.TabIndex = 4;
+            this.SettingsEngineSpeedLabel1.Text = "Fast mode and safe mode have their own unique macros\r\nand they are not compatible" +
+    " with each other";
             // 
             // SettingsSavedFeedbackLabel
             // 
@@ -599,42 +775,22 @@ namespace MacroManager
             this.SettingsSavedFeedbackLabel.Text = "Settings have been saved!";
             this.SettingsSavedFeedbackLabel.Visible = false;
             // 
-            // SettingsFastModeLabel2
-            // 
-            this.SettingsFastModeLabel2.AutoSize = true;
-            this.SettingsFastModeLabel2.ForeColor = System.Drawing.Color.DimGray;
-            this.SettingsFastModeLabel2.Location = new System.Drawing.Point(60, 212);
-            this.SettingsFastModeLabel2.Name = "SettingsFastModeLabel2";
-            this.SettingsFastModeLabel2.Size = new System.Drawing.Size(318, 17);
-            this.SettingsFastModeLabel2.TabIndex = 2;
-            this.SettingsFastModeLabel2.Text = "Can cause issues if your computer can\'t keep up.";
-            // 
             // SettingsSafeModeLabel1
             // 
             this.SettingsSafeModeLabel1.AutoSize = true;
-            this.SettingsSafeModeLabel1.ForeColor = System.Drawing.Color.DimGray;
-            this.SettingsSafeModeLabel1.Location = new System.Drawing.Point(60, 275);
+            this.SettingsSafeModeLabel1.ForeColor = System.Drawing.Color.Gray;
+            this.SettingsSafeModeLabel1.Location = new System.Drawing.Point(60, 265);
             this.SettingsSafeModeLabel1.Name = "SettingsSafeModeLabel1";
-            this.SettingsSafeModeLabel1.Size = new System.Drawing.Size(339, 17);
+            this.SettingsSafeModeLabel1.Size = new System.Drawing.Size(335, 17);
             this.SettingsSafeModeLabel1.TabIndex = 1;
-            this.SettingsSafeModeLabel1.Text = "Records macros and does action 20 times a second.";
-            // 
-            // SettingsFastModeLabel1
-            // 
-            this.SettingsFastModeLabel1.AutoSize = true;
-            this.SettingsFastModeLabel1.ForeColor = System.Drawing.Color.DimGray;
-            this.SettingsFastModeLabel1.Location = new System.Drawing.Point(60, 195);
-            this.SettingsFastModeLabel1.Name = "SettingsFastModeLabel1";
-            this.SettingsFastModeLabel1.Size = new System.Drawing.Size(339, 17);
-            this.SettingsFastModeLabel1.TabIndex = 0;
-            this.SettingsFastModeLabel1.Text = "Records macros and does action 50 times a second.";
+            this.SettingsSafeModeLabel1.Text = "Records macros and does action 20 times a second";
             // 
             // SettingsSafeModeRadioButton
             // 
             this.SettingsSafeModeRadioButton.AutoSize = true;
             this.SettingsSafeModeRadioButton.Checked = true;
             this.SettingsSafeModeRadioButton.ForeColor = System.Drawing.Color.White;
-            this.SettingsSafeModeRadioButton.Location = new System.Drawing.Point(45, 250);
+            this.SettingsSafeModeRadioButton.Location = new System.Drawing.Point(45, 240);
             this.SettingsSafeModeRadioButton.Name = "SettingsSafeModeRadioButton";
             this.SettingsSafeModeRadioButton.Size = new System.Drawing.Size(97, 21);
             this.SettingsSafeModeRadioButton.TabIndex = 0;
@@ -646,7 +802,7 @@ namespace MacroManager
             // 
             this.SettingsFastModeRadioButton.AutoSize = true;
             this.SettingsFastModeRadioButton.ForeColor = System.Drawing.Color.White;
-            this.SettingsFastModeRadioButton.Location = new System.Drawing.Point(45, 170);
+            this.SettingsFastModeRadioButton.Location = new System.Drawing.Point(45, 160);
             this.SettingsFastModeRadioButton.Name = "SettingsFastModeRadioButton";
             this.SettingsFastModeRadioButton.Size = new System.Drawing.Size(95, 21);
             this.SettingsFastModeRadioButton.TabIndex = 0;
@@ -718,16 +874,16 @@ namespace MacroManager
             this.SettingsToHotkeysButton.UseVisualStyleBackColor = true;
             this.SettingsToHotkeysButton.Click += new System.EventHandler(this.SettingsToHotkeysButton_Click);
             // 
-            // SettingsEngineSpeedLabel
+            // SettingsEngineSpeedTitle
             // 
-            this.SettingsEngineSpeedLabel.AutoSize = true;
-            this.SettingsEngineSpeedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SettingsEngineSpeedLabel.ForeColor = System.Drawing.Color.White;
-            this.SettingsEngineSpeedLabel.Location = new System.Drawing.Point(30, 80);
-            this.SettingsEngineSpeedLabel.Name = "SettingsEngineSpeedLabel";
-            this.SettingsEngineSpeedLabel.Size = new System.Drawing.Size(124, 20);
-            this.SettingsEngineSpeedLabel.TabIndex = 0;
-            this.SettingsEngineSpeedLabel.Text = "Engine Speed";
+            this.SettingsEngineSpeedTitle.AutoSize = true;
+            this.SettingsEngineSpeedTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SettingsEngineSpeedTitle.ForeColor = System.Drawing.Color.White;
+            this.SettingsEngineSpeedTitle.Location = new System.Drawing.Point(30, 80);
+            this.SettingsEngineSpeedTitle.Name = "SettingsEngineSpeedTitle";
+            this.SettingsEngineSpeedTitle.Size = new System.Drawing.Size(124, 20);
+            this.SettingsEngineSpeedTitle.TabIndex = 0;
+            this.SettingsEngineSpeedTitle.Text = "Engine Speed";
             // 
             // HotkeyTimer
             // 
@@ -954,11 +1110,11 @@ namespace MacroManager
             this.Controls.Add(this.Title);
             this.Controls.Add(this.MinimizeApplicationButton);
             this.Controls.Add(this.CloseApplicationButton);
-            this.Controls.Add(this.HotkeysPanel);
-            this.Controls.Add(this.AutoClickerPanel);
             this.Controls.Add(this.ConfirmDeletePanel);
             this.Controls.Add(this.MacrosPanel);
             this.Controls.Add(this.SettingsPanel);
+            this.Controls.Add(this.HotkeysPanel);
+            this.Controls.Add(this.AutoClickerPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MacroManagerForm";
@@ -1009,12 +1165,10 @@ namespace MacroManager
         private System.Windows.Forms.Button SaveSettingsButton;
         private System.Windows.Forms.Button SettingsToMacroButton;
         private System.Windows.Forms.Button SettingsToHotkeysButton;
-        private System.Windows.Forms.Label SettingsEngineSpeedLabel;
+        private System.Windows.Forms.Label SettingsEngineSpeedTitle;
         private System.Windows.Forms.Button HotkeysToSettingsButton;
         private System.Windows.Forms.Button SettingsToSettingsButton;
-        private System.Windows.Forms.Label SettingsFastModeLabel2;
         private System.Windows.Forms.Label SettingsSafeModeLabel1;
-        private System.Windows.Forms.Label SettingsFastModeLabel1;
         private System.Windows.Forms.RadioButton SettingsSafeModeRadioButton;
         private System.Windows.Forms.RadioButton SettingsFastModeRadioButton;
         private System.Windows.Forms.Button SaveHotkeysButton;
@@ -1028,10 +1182,10 @@ namespace MacroManager
         private System.Windows.Forms.Label SettingsSavedFeedbackLabel;
         private System.Windows.Forms.Label MacrosSavedFeedbackLabel;
         private System.Windows.Forms.Label HotkeysSavedFeedbackLabel;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label SettingsEngineSpeedLabel1;
         private System.Windows.Forms.Button SettingsToAutoClickerButton;
         private System.Windows.Forms.CheckBox SettingsClickWhileMovingCheckbox;
-        private System.Windows.Forms.Label SettingsAutoClickerLabel;
+        private System.Windows.Forms.Label SettingsAutoClickerTitle;
         private System.Windows.Forms.Button HotkeyToAutoClickerButton;
         private System.Windows.Forms.Button MacroToAutoClickerButton;
         private System.Windows.Forms.Panel AutoClickerPanel;
@@ -1051,6 +1205,21 @@ namespace MacroManager
         private System.Windows.Forms.Button CancelConfirmDeleteButton;
         private System.Windows.Forms.Label ConfirmDeleteLabel;
         private System.Windows.Forms.Panel ConfirmDeletePanel;
+        private System.Windows.Forms.Label SettingsFastModeLabel;
+        private System.Windows.Forms.Label SettingsGeneralHotkeysLabel;
+        private System.Windows.Forms.TextBox SettingsStopAutoClickerTextbox;
+        private System.Windows.Forms.Label SettingsStopAutoClickerLabel;
+        private System.Windows.Forms.TextBox SettingsStartAutoClickerTextbox;
+        private System.Windows.Forms.Label SettingsStartAutoClickerLabel;
+        private System.Windows.Forms.TextBox SettingsCreateHotkeyTextbox;
+        private System.Windows.Forms.Label SettingsCreateHotkeyLabel;
+        private System.Windows.Forms.TextBox SettingsStopMacroTextbox;
+        private System.Windows.Forms.Label SettingsStopMacroLabel;
+        private System.Windows.Forms.TextBox SettingsStartMacroTextbox;
+        private System.Windows.Forms.Label SettingsStartMacroLabel;
+        private System.Windows.Forms.Label SettingsGeneralHotkeysTitle;
+        private System.Windows.Forms.CheckBox SettingsSameAutoClickerHotkeyCheckbox;
+        private System.Windows.Forms.CheckBox SettingsSameMacroHotkeyCheckbox;
     }
 }
 

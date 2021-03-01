@@ -136,11 +136,6 @@ active.</value>
   <metadata name="Timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Notice: Safe mode macros are not compatible with fast mode macros.
-If you want to change engine speed you also need to redo your macros.
-Your safe mode macros will be saved and you can restore them by setting engine speed back to safe mode.</value>
-  </data>
   <metadata name="HotkeyTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>118, 17</value>
   </metadata>

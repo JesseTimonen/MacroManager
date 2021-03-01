@@ -48,7 +48,8 @@ namespace MacroManager
         private KeyHandler newHotkeyKeyHandler;
         private KeyHandler startMacroKeyHandler;
         private KeyHandler stopMacroKeyHandler;
-        private KeyHandler autoClickerKeyHandler;
+        private KeyHandler startAutoClickerKeyHandler;
+        private KeyHandler stopAutoClickerKeyHandler;
 
         public struct Hotkey
         {
@@ -103,15 +104,18 @@ namespace MacroManager
             CreateHotkeyPlaceholders();
             UpdateMacrosUI();
             UpdateHotkeysUI();
+            UpdateHotkeyHelpTexts();
 
-            startMacroKeyHandler = new KeyHandler(Keys.F1, 10001, this);
-            stopMacroKeyHandler = new KeyHandler(Keys.F2, 10002, this);
-            newHotkeyKeyHandler = new KeyHandler(Keys.F3, 10003, this);
-            autoClickerKeyHandler = new KeyHandler(Keys.F5, 10004, this);
+            startMacroKeyHandler = new KeyHandler(KeyHandler.ConvertToFKey(settings["StartMacroHotkey"]), 10001, this);
+            stopMacroKeyHandler = new KeyHandler(KeyHandler.ConvertToFKey(settings["StopMacroHotkey"]), 10002, this);
+            newHotkeyKeyHandler = new KeyHandler(KeyHandler.ConvertToFKey(settings["CreateHotkeyHotkey"]), 10003, this);
+            startAutoClickerKeyHandler = new KeyHandler(KeyHandler.ConvertToFKey(settings["StartAutoClickerHotkey"]), 10004, this);
+            stopAutoClickerKeyHandler = new KeyHandler(KeyHandler.ConvertToFKey(settings["StopAutoClickerHotkey"]), 10005, this);
             startMacroKeyHandler.Register();
             stopMacroKeyHandler.Register();
             newHotkeyKeyHandler.Register();
-            autoClickerKeyHandler.Register();
+            startAutoClickerKeyHandler.Register();
+            stopAutoClickerKeyHandler.Register();
         }
 
         private void MacroManagerForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -126,7 +130,8 @@ namespace MacroManager
             startMacroKeyHandler.Unregister();
             stopMacroKeyHandler.Unregister();
             newHotkeyKeyHandler.Unregister();
-            autoClickerKeyHandler.Unregister();
+            startAutoClickerKeyHandler.Unregister();
+            stopAutoClickerKeyHandler.Unregister();
         }
 
         private void MinimizeApplicationButton_Click(object sender, EventArgs e)
@@ -164,6 +169,13 @@ namespace MacroManager
             MacrosSavedFeedbackLabel.Visible = false;
 
             SettingsClickWhileMovingCheckbox.Checked = bool.Parse(settings["ClickWhileMoving"]);
+            SettingsSameMacroHotkeyCheckbox.Checked = bool.Parse(settings["SameHotkeyForMacros"]);
+            SettingsSameAutoClickerHotkeyCheckbox.Checked = bool.Parse(settings["SameHotkeyForAutoClicker"]);
+            SettingsStartMacroTextbox.Text = settings["StartMacroHotkey"];
+            SettingsStopMacroTextbox.Text = settings["StopMacroHotkey"];
+            SettingsCreateHotkeyTextbox.Text = settings["CreateHotkeyHotkey"];
+            SettingsStartAutoClickerTextbox.Text = settings["StartAutoClickerHotkey"];
+            SettingsStopAutoClickerTextbox.Text = settings["StopAutoClickerHotkey"];
 
             if (settings["EngineSpeed"] == "fast")
             {
@@ -198,6 +210,13 @@ namespace MacroManager
             HotkeysSavedFeedbackLabel.Visible = false;
 
             SettingsClickWhileMovingCheckbox.Checked = bool.Parse(settings["ClickWhileMoving"]);
+            SettingsSameMacroHotkeyCheckbox.Checked = bool.Parse(settings["SameHotkeyForMacros"]);
+            SettingsSameAutoClickerHotkeyCheckbox.Checked = bool.Parse(settings["SameHotkeyForAutoClicker"]);
+            SettingsStartMacroTextbox.Text = settings["StartMacroHotkey"];
+            SettingsStopMacroTextbox.Text = settings["StopMacroHotkey"];
+            SettingsCreateHotkeyTextbox.Text = settings["CreateHotkeyHotkey"];
+            SettingsStartAutoClickerTextbox.Text = settings["StartAutoClickerHotkey"];
+            SettingsStopAutoClickerTextbox.Text = settings["StopAutoClickerHotkey"];
 
             if (settings["EngineSpeed"] == "fast")
             {
@@ -229,6 +248,13 @@ namespace MacroManager
             SettingsPanel.Visible = true;
 
             SettingsClickWhileMovingCheckbox.Checked = bool.Parse(settings["ClickWhileMoving"]);
+            SettingsSameMacroHotkeyCheckbox.Checked = bool.Parse(settings["SameHotkeyForMacros"]);
+            SettingsSameAutoClickerHotkeyCheckbox.Checked = bool.Parse(settings["SameHotkeyForAutoClicker"]);
+            SettingsStartMacroTextbox.Text = settings["StartMacroHotkey"];
+            SettingsStopMacroTextbox.Text = settings["StopMacroHotkey"];
+            SettingsCreateHotkeyTextbox.Text = settings["CreateHotkeyHotkey"];
+            SettingsStartAutoClickerTextbox.Text = settings["StartAutoClickerHotkey"];
+            SettingsStopAutoClickerTextbox.Text = settings["StopAutoClickerHotkey"];
 
             if (settings["EngineSpeed"] == "fast")
             {
@@ -379,13 +405,35 @@ namespace MacroManager
             EnableMacroUIButtons(false);
             placeholderNewRecordedMacroInstructions = "";
             newRecordedMacroInstructions = "";
-            NewMacroButton.Text = "Stop Recording (Hotkey: F2)";
             MacroStatusLabel.Visible = false;
             MacroStatusLabel.Text = "Recoding new Macro";
             MacroStatusLabel.Visible = true;
             MacroStatusLabel.ForeColor = Color.Green;
             StartTimer();
             ActivateMouseHook();
+
+            if (bool.Parse(settings["SameHotkeyForMacros"]))
+            {
+                if (settings["StartMacroHotkey"].ToLower() == "already in use" || settings["StartMacroHotkey"].ToLower() == "none")
+                {
+                    NewMacroButton.Text = "Stop Recording";
+                }
+                else
+                {
+                    NewMacroButton.Text = "Stop Recording\n(Hotkey: " + settings["StartMacroHotkey"] + ")";
+                }
+            }
+            else
+            {
+                if (settings["StopMacroHotkey"].ToLower() == "already in use" || settings["StopMacroHotkey"].ToLower() == "none")
+                {
+                    NewMacroButton.Text = "Stop Recording";
+                }
+                else
+                {
+                    NewMacroButton.Text = "Stop Recording\n(Hotkey: " + settings["StopMacroHotkey"] + ")";
+                }
+            }
         }
 
         private void stopMacroRecording()
@@ -394,11 +442,19 @@ namespace MacroManager
             DeactivateMouseHook();
             StopTimer();
             EnableMacroUIButtons(true);
-            NewMacroButton.Text = "Record New Macro (Hotkey: F1)";
             MacroStatusLabel.Visible = false;
             MacroStatusLabel.Text = "OFF";
             MacroStatusLabel.Visible = true;
             MacroStatusLabel.ForeColor = Color.Red;
+
+            if (settings["StartMacroHotkey"].ToLower() == "already in use" || settings["StartMacroHotkey"].ToLower() == "none")
+            {
+                NewMacroButton.Text = "Record New Macro";
+            }
+            else
+            {
+                NewMacroButton.Text = "Record New Macro\n(Hotkey: " + settings["StartMacroHotkey"] + ")";
+            }
 
             if (newRecordedMacroInstructions != "")
             {
@@ -416,11 +472,19 @@ namespace MacroManager
             EnableMacroUIButtons(true);
             isPlayingMacro = false;
             macroInstructions.Clear();
-            NewMacroButton.Text = "Record New Macro (Hotkey: F1)";
             MacroStatusLabel.Visible = false;
             MacroStatusLabel.Text = "OFF";
             MacroStatusLabel.Visible = true;
             MacroStatusLabel.ForeColor = Color.Red;
+
+            if (settings["StartMacroHotkey"].ToLower() == "already in use" || settings["StartMacroHotkey"].ToLower() == "none")
+            {
+                NewMacroButton.Text = "Record New Macro";
+            }
+            else
+            {
+                NewMacroButton.Text = "Record New Macro\n(Hotkey: " + settings["StartMacroHotkey"] + ")";
+            }
         }
 
         private void SaveMacrosButton_Click(object sender, EventArgs e)
@@ -527,27 +591,49 @@ namespace MacroManager
 
         private void ToggleAutoClickerButton_Click(object sender, EventArgs e)
         {
-            autoClickerEnabled = !autoClickerEnabled;
-
             if (autoClickerEnabled)
             {
-                AutoClickerInputTextBox_Validated(null, null);
-                if (int.Parse(AutoClickerInputTextBox.Text) == 0) { return;  }
-                StartAutoClicker();
+                StopAutoClicker();
             }
             else
             {
-                StopAutoClicker();
+                StartAutoClicker();
             }
         }
 
         private void StartAutoClicker()
         {
+            AutoClickerInputTextBox_Validated(null, null);
+            if (int.Parse(AutoClickerInputTextBox.Text) == 0) { return; }
+            autoClickerEnabled = true;
             EnableAutoClickerUIButtons(false);
             AutoClickerStatusLabel.Text = "ON";
             AutoClickerStatusLabel.ForeColor = Color.Green;
             ToggleAutoClickerButton.FlatAppearance.BorderColor = Color.Green;
             ToggleAutoClickerButton.FlatAppearance.BorderSize = 2;
+
+            if (bool.Parse(settings["SameHotkeyForAutoClicker"]))
+            {
+                if (settings["StartAutoClickerHotkey"].ToLower() == "already in use" || settings["StartAutoClickerHotkey"].ToLower() == "none")
+                {
+                    ToggleAutoClickerButton.Text = "Stop AutoClicker";
+                }
+                else
+                {
+                    ToggleAutoClickerButton.Text = "Stop AutoClicker\n(Hotkey: " + settings["StartAutoClickerHotkey"] + ")";
+                }
+            }
+            else
+            {
+                if (settings["StopAutoClickerHotkey"].ToLower() == "already in use" || settings["StopAutoClickerHotkey"].ToLower() == "none")
+                {
+                    ToggleAutoClickerButton.Text = "Stop AutoClicker";
+                }
+                else
+                {
+                    ToggleAutoClickerButton.Text = "Stop AutoClicker\n(Hotkey: " + settings["StopAutoClickerHotkey"] + ")";
+                }
+            }
 
             if (autoClickerDelayMode)
             {
@@ -565,12 +651,22 @@ namespace MacroManager
 
         private void StopAutoClicker()
         {
+            autoClickerEnabled = false;
             EnableAutoClickerUIButtons(true);
             AutoClickerStatusLabel.Text = "OFF";
             AutoClickerStatusLabel.ForeColor = Color.Red;
             ToggleAutoClickerButton.FlatAppearance.BorderColor = Color.Red;
             ToggleAutoClickerButton.FlatAppearance.BorderSize = 1;
             AutoClickerTimer.Stop();
+
+            if (settings["StartAutoClickerHotkey"].ToLower() == "already in use" || settings["StartAutoClickerHotkey"].ToLower() == "none")
+            {
+                ToggleAutoClickerButton.Text = "Start AutoClicker";
+            }
+            else
+            {
+                ToggleAutoClickerButton.Text = "Start AutoClicker\n(Hotkey: " + settings["StartAutoClickerHotkey"] + ")";
+            }
         }
 
         private void EnableAutoClickerUIButtons(bool enable)
@@ -751,16 +847,84 @@ namespace MacroManager
 
 
         // ============================================== Settings ============================================= \\
+        private void SettingsStartMacroHotkeyTextbox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            SettingsStartMacroTextbox.Text = ValidateSettingsHotkeys(SettingsStartMacroTextbox.Text);
+        }
+
+        private void SettingsStopMacroTextbox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            SettingsStopMacroTextbox.Text = ValidateSettingsHotkeys(SettingsStopMacroTextbox.Text);
+        }
+
+        private void SettingsCreateHotkeyTextbox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            SettingsCreateHotkeyTextbox.Text = ValidateSettingsHotkeys(SettingsCreateHotkeyTextbox.Text);
+        }
+
+        private void SettingsStartAutoClickerTextbox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            SettingsStartAutoClickerTextbox.Text = ValidateSettingsHotkeys(SettingsStartAutoClickerTextbox.Text);
+        }
+
+        private void SettingsStopAutoClickerTextbox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            SettingsStopAutoClickerTextbox.Text = ValidateSettingsHotkeys(SettingsStopAutoClickerTextbox.Text);
+        }
+
+        private void SettingsSameMacroKeyCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SettingsSameMacroHotkeyCheckbox.Checked)
+            {
+                SettingsStopMacroTextbox.Enabled = false;
+                SettingsStopMacroTextbox.Text = "None";
+            }
+            else
+            {
+                SettingsStopMacroTextbox.Enabled = true;
+                SettingsStopMacroTextbox.Text = "None";
+            }
+        }
+
+        private void SettingsSameAutoClickerKeyCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SettingsSameAutoClickerHotkeyCheckbox.Checked)
+            {
+                SettingsStopAutoClickerTextbox.Enabled = false;
+                SettingsStopAutoClickerTextbox.Text = "None";
+            }
+            else
+            {
+                SettingsStopAutoClickerTextbox.Enabled = true;
+                SettingsStopAutoClickerTextbox.Text = "None";
+            }
+        }
+
+        private string ValidateSettingsHotkeys(string hotkey)
+        {
+            if (hotkey.ToLower() == "none") { return hotkey; }
+
+            if (KeyHandler.ConvertToFKey(hotkey) == Keys.None)
+            {
+                return "Invalid";
+            }
+            else
+            {
+                int hotkeysFound = 0;
+                if (hotkey.ToLower() == SettingsStartMacroTextbox.Text.ToLower()) { hotkeysFound++; }
+                if (hotkey.ToLower() == SettingsStopMacroTextbox.Text.ToLower()) { hotkeysFound++; }
+                if (hotkey.ToLower() == SettingsCreateHotkeyTextbox.Text.ToLower()) { hotkeysFound++; }
+                if (hotkey.ToLower() == SettingsStartAutoClickerTextbox.Text.ToLower()) { hotkeysFound++; }
+                if (hotkey.ToLower() == SettingsStopAutoClickerTextbox.Text.ToLower()) { hotkeysFound++; }
+                if (hotkeysFound >= 2) { return "Already in use"; }
+            }
+
+            return hotkey;
+        }
+
         private void SaveSettingsButton_Click(object sender, EventArgs e)
         {
-            if (settings.ContainsKey("EngineSpeed"))
-            {
-                settings.Remove("EngineSpeed");
-            }
-            if (settings.ContainsKey("ClickWhileMoving"))
-            {
-                settings.Remove("ClickWhileMoving");
-            }
+            settings.Clear();
 
             if (SettingsFastModeRadioButton.Checked)
             {
@@ -772,10 +936,34 @@ namespace MacroManager
             }
 
             settings.Add("ClickWhileMoving", SettingsClickWhileMovingCheckbox.Checked.ToString());
+            settings.Add("SameHotkeyForMacros", SettingsSameMacroHotkeyCheckbox.Checked.ToString());
+            settings.Add("SameHotkeyForAutoClicker", SettingsSameAutoClickerHotkeyCheckbox.Checked.ToString());
+            settings.Add("StartMacroHotkey", SettingsStartMacroTextbox.Text);
+            settings.Add("StopMacroHotkey", SettingsStopMacroTextbox.Text);
+            settings.Add("StartAutoClickerHotkey", SettingsStartAutoClickerTextbox.Text);
+            settings.Add("StopAutoClickerHotkey", SettingsStopAutoClickerTextbox.Text);
+            settings.Add("CreateHotkeyHotkey", SettingsCreateHotkeyTextbox.Text);
 
             SaveSettings();
             LoadData();
             UpdateTimerInterval();
+
+            startMacroKeyHandler.Unregister();
+            stopMacroKeyHandler.Unregister();
+            newHotkeyKeyHandler.Unregister();
+            startAutoClickerKeyHandler.Unregister();
+            stopAutoClickerKeyHandler.Unregister();
+            startMacroKeyHandler = new KeyHandler(KeyHandler.ConvertToFKey(settings["StartMacroHotkey"]), 10001, this);
+            stopMacroKeyHandler = new KeyHandler(KeyHandler.ConvertToFKey(settings["StopMacroHotkey"]), 10002, this);
+            newHotkeyKeyHandler = new KeyHandler(KeyHandler.ConvertToFKey(settings["CreateHotkeyHotkey"]), 10003, this);
+            startAutoClickerKeyHandler = new KeyHandler(KeyHandler.ConvertToFKey(settings["StartAutoClickerHotkey"]), 10004, this);
+            stopAutoClickerKeyHandler = new KeyHandler(KeyHandler.ConvertToFKey(settings["StopAutoClickerHotkey"]), 10005, this);
+            startMacroKeyHandler.Register();
+            stopMacroKeyHandler.Register();
+            newHotkeyKeyHandler.Register();
+            startAutoClickerKeyHandler.Register();
+            stopAutoClickerKeyHandler.Register();
+
             foreach (var macroNameLabel in macroNameLabels) { macroNameLabel.Dispose(); }
             foreach (var macroHotkeyLabel in macroHotkeyLabels) { macroHotkeyLabel.Dispose(); }
             foreach (var macroDelayLabel in macroDelayLabels) { macroDelayLabel.Dispose(); }
@@ -798,6 +986,7 @@ namespace MacroManager
             deleteMacroButtons.Clear();
             CreateMacroPlaceholders();
             UpdateMacrosUI();
+            UpdateHotkeyHelpTexts();
         }
 
         private void UpdateTimerInterval()
@@ -837,13 +1026,34 @@ namespace MacroManager
                 // Start macro hotkey
                 if (id == 10001)
                 {
-                    if (!isPlayingMacro && !isRecordingMacro && !autoClickerEnabled) { startMacroRecording(); }
+                    if (bool.Parse(settings["SameHotkeyForMacros"]) == false)
+                    {
+                        if (!isPlayingMacro && !isRecordingMacro && !autoClickerEnabled) { startMacroRecording(); }
+                    }
+                    else
+                    {
+                        if (isPlayingMacro)
+                        {
+                            stopMacroReplay();
+                        }
+                        else if (isRecordingMacro)
+                        {
+                            stopMacroRecording();
+                        }
+                        else if (!autoClickerEnabled)
+                        {
+                            startMacroRecording();
+                        }
+                    }
                 }
                 // Stop macro hotkey
                 else if (id == 10002)
                 {
-                    if (isPlayingMacro) { stopMacroReplay(); }
-                    else if (isRecordingMacro) { stopMacroRecording(); }
+                    if (bool.Parse(settings["SameHotkeyForMacros"]) == false)
+                    {
+                        if (isPlayingMacro) { stopMacroReplay(); }
+                        else if (isRecordingMacro) { stopMacroRecording(); }
+                    }
                 }
                 // "Create hotkey" -hotkey
                 else if (id == 10003)
@@ -856,12 +1066,27 @@ namespace MacroManager
                         UpdateHotkeysUI();
                     }
                 }
-                // Auto clicker hotkey
+                // Start auto clicker hotkey
                 else if (id == 10004)
                 {
                     if (!isPlayingMacro && !isRecordingMacro)
                     {
-                        ToggleAutoClickerButton_Click(null, null);
+                        if (bool.Parse(settings["SameHotkeyForAutoClicker"]))
+                        {
+                            ToggleAutoClickerButton_Click(null, null);
+                        }
+                        else
+                        {
+                            StartAutoClicker();
+                        }
+                    }
+                }
+                // Stop auto clicker hotkey
+                else if (id == 10005)
+                {
+                    if (autoClickerEnabled && bool.Parse(settings["SameHotkeyForAutoClicker"]) == false)
+                    {
+                        StopAutoClicker();
                     }
                 }
                 else
@@ -890,5 +1115,32 @@ namespace MacroManager
             base.WndProc(ref m);
         }
         // ======================================== End Keyboard hotkeys ======================================= \\
+
+
+
+        // =========================================== Miscellaneous =========================================== \\
+        private void UpdateHotkeyHelpTexts()
+        {
+            HotkeyGuideLabel2.Text = "Hover your mouse over\nthe point you want to\nactivate with the hotkey\nand press [" + ((settings["CreateHotkeyHotkey"].ToLower() != "already in use" && settings["CreateHotkeyHotkey"].ToLower() != "none") ? settings["CreateHotkeyHotkey"] : "None") + "] and the\nhotkey will be created.\n\nGive the hotkey a input\nkey and click the save\nhotkeys button.\n\nNote: You can only\ncreate hotkeys when\nhotkeys module is not\nactive.\n";
+           
+            if (settings["StartAutoClickerHotkey"].ToLower() == "already in use" || settings["StartAutoClickerHotkey"].ToLower() == "none")
+            {
+                ToggleAutoClickerButton.Text = "Start AutoClicker";
+            }
+            else
+            {
+                ToggleAutoClickerButton.Text = "Start AutoClicker\n(Hotkey: " + settings["StartAutoClickerHotkey"] + ")";
+            }
+
+            if (settings["StartMacroHotkey"].ToLower() == "already in use" || settings["StartMacroHotkey"].ToLower() == "none")
+            {
+                NewMacroButton.Text = "Record New Macro";
+            }
+            else
+            {
+                NewMacroButton.Text = "Record New Macro\n(Hotkey: " + settings["StartMacroHotkey"] + ")";
+            }
+        }
+        // ========================================= End Miscellaneous ========================================= \\
     }
 }

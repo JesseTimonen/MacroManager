@@ -104,5 +104,25 @@ namespace MacroManager
                 default: return Keys.None;
             }
         }
+
+        public static Keys ConvertToFKey(string input)
+        {
+            switch (input.ToLower())
+            {
+                case "f1": return Keys.F1;
+                case "f2": return Keys.F2;
+                case "f3": return Keys.F3;
+                case "f4": return Keys.F4;
+                case "f5": return Keys.F5;
+                case "f6": return Keys.F6;
+                case "f7": return Keys.F7;
+                case "f8": return Keys.F8;
+                case "f9": return Keys.F9;
+                case "f10": return Keys.F10;
+                case "f11": return Keys.F11;
+                case "f12": return Keys.F12;
+                default: return Keys.None;
+            }
+        }
     }
 }
